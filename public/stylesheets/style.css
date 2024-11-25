@@ -71,6 +71,7 @@ body {
   display: inline-block;
   padding: 1rem 2rem;
   background-color: #e74c3c;
+  margin-bottom: 3em;
   color: white;
   text-decoration: none;
   border-radius: 35px;
@@ -253,6 +254,7 @@ footer {
 }
 
 .fact-checking-tool h2 {
+  text-align: center;
   margin-bottom: 1rem;
   color: #2c3e50;
 }
@@ -264,22 +266,31 @@ footer {
 
 input[type="text"] {
   width: 100%;
-  padding: 0.8rem;
+  max-width: 600px;
+  padding: 1rem;
   margin-bottom: 1rem;
   border: 2px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+  border-color: #3498db;
 }
 
 button {
+  width: auto;
   background-color: #2ecc71;
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 4px;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  align-self: center;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
@@ -292,8 +303,9 @@ button:hover {
   margin-top: 2rem;
   padding: 1.5rem;
   background-color: white;
-  border-radius: 4px;
+  border-radius: 8px;
   border-left: 4px solid #3498db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .result.error {
@@ -313,11 +325,13 @@ button:hover {
 }
 
 .guidance-box {
+  flex: 1 1 35%;
   background-color: #f1f9ff;
   border-left: 4px solid #3498db;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: 4px;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
 }
 
 .guidance-box h3 {
@@ -327,13 +341,14 @@ button:hover {
 
 .example-list {
   list-style: none;
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
+  margin: 1rem 0;
+  padding-left: 1rem;
 }
 
 .example-list li {
   position: relative;
-  margin: 0.3rem 0;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
 }
 
 .example-list li:before {
@@ -341,5 +356,41 @@ button:hover {
   color: #3498db;
   font-weight: bold;
   position: absolute;
-  left: -1rem;
+  left: -1.5rem;
+}
+
+
+.quiz {
+  text-align: center;
+  margin: 1em auto;
+  max-width: 600px;
+  margin-bottom: 4em;
+  background: white;
+  border-radius: 8px;
+  padding: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#answers li {
+  margin: 1em 0;
+  padding: 0.5em;
+  list-style: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#answers li:hover {
+  background-color: #f0f0f0;
+}
+
+.result-message {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.quiz-question {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2em;
 }

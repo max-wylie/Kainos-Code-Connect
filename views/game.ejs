@@ -25,13 +25,133 @@
     <h1>Game Section</h1>
     <p class="info">Test your skills in identifying fake news through interactive games and quizzes.</p>
     </header>
-  </body>
+
+    <!-- Quiz Section -->
+    <main class="content">
+      <section class="quiz">
+          <a class="fc-button">Spot the Misinformation Quiz</a>
+          <div id="quiz-container">
+              <p id="question" class  = "quiz-question"><strong>Loading question...</strong></p>
+              <ul id="answers">
+              </ul>
+              <button id="next-btn" style="display: none;">Next Question</button>
+          </div>
+          <p id="result" class="result-message" style="display: none;"></p>
+      </section>
+  </main>
+  
+  <script>
+
+const quizQuestions = [
+    {
+        question: "Question: You find a news article with no listed author. What should you do?",
+        options: [
+            "Assume it's true and share it immediately.",
+            "Look for additional sources to verify the claim.",
+            "Ignore it completely because it's fake.",
+            "Trust it because it looks professional."
+        ],
+        correct: 1 // Index of the correct answer
+    },
+    {
+        question: "Question: A website has several grammar mistakes and a suspicious URL. What should you think?",
+        options: [
+            "It is likely to be a trustworthy source.",
+            "The mistakes don't matter if the story seems true.",
+            "It might be unreliable; double-check other sources.",
+            "It's clearly a well-researched article."
+        ],
+        correct: 2
+    },
+    {
+        question: "Question: What is the definition of the term fake news?",
+        options: [
+            "Biased reporting of real events.",
+            "Fabricated or misleading information presented as news.",
+            "Different accounts of the same news story",
+            "Made up stories in a book."
+        ],
+        correct: 1
+    }
+];
+
+let currentQuestionIndex = 0;
+
+function loadQuestion() {
+    const questionElement = document.getElementById("question");
+    const answersElement = document.getElementById("answers");
+    const nextButton = document.getElementById("next-btn");
+    const resultMessage = document.getElementById("result");
+
+    // Clear previous result
+    resultMessage.style.display = "none";
+    resultMessage.textContent = "";
+
+    // Load the current question
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+
+    // Clear previous answers
+    answersElement.innerHTML = "";
+
+    // Load options
+    currentQuestion.options.forEach((option, index) => {
+        const li = document.createElement("li");
+        li.textContent = option;
+        li.addEventListener("click", () => checkAnswer(index));
+        answersElement.appendChild(li);
+    });
+
+    // Hide the next button until an answer is selected
+    nextButton.style.display = "none";
+}
+
+function checkAnswer(selectedIndex) {
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+    const resultMessage = document.getElementById("result");
+    const nextButton = document.getElementById("next-btn");
+
+    if (selectedIndex === currentQuestion.correct) {
+        resultMessage.textContent = "Correct! Well done!";
+        resultMessage.style.color = "green";
+    } else {
+        resultMessage.textContent = "Incorrect. The correct answer is: " + currentQuestion.options[currentQuestion.correct];
+        resultMessage.style.color = "red";
+    }
+
+    resultMessage.style.display = "block";
+    nextButton.style.display = "block";
+}
+
+function loadNextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizQuestions.length) {
+        loadQuestion();
+    } else {
+        // End of quiz
+        const questionElement = document.getElementById("question");
+        const answersElement = document.getElementById("answers");
+        const nextButton = document.getElementById("next-btn");
+        const resultMessage = document.getElementById("result");
+
+        questionElement.textContent = "You've completed the quiz!";
+        answersElement.innerHTML = "";
+        nextButton.style.display = "none";
+        resultMessage.style.display = "none";
+    }
+}
+
+// Initial setup
+document.getElementById("next-btn").addEventListener("click", loadNextQuestion);
+loadQuestion();
+
+  </script>
 
   <footer>
     <div class="footer-content">
         <p>© 2024 Combat Fake Info. All rights reserved.</p>
     </div>
   </footer>
-  
+  </body>
 </html>
 
