@@ -30,6 +30,28 @@
       <section class="fact-checking-tool">
           <h2>Check Your Facts</h2>
 
+          <div class="fact-checking-container">
+            <!--Input and button section-->
+          <form id="fact-check-form">
+              <input type="text" 
+                     id="statement" 
+                     name="statement" 
+                     placeholder="Example: 'The unemployment rate in 2023 was the lowest in 50 years'" 
+                     required>
+              <button type="submit">Check Fact</button>
+          </form>
+          </div>
+
+
+          <!-- Loading and results -->
+          <div class="loading" id="loading">
+            Checking facts...
+        </div>
+
+        <div id="result" class="result"></div>
+    
+
+          <!-- Guidance Section -->
           <div class="guidance-box">
             <h3>What Works Best?</h3>
             <p>This fact-checker works best with:</p>
@@ -42,22 +64,7 @@
             <p><small>For best results, try to enter complete statements rather than general topics or questions.</small></p>
             </div>
 
-          <p>Type a statement below to verify:</p>
-          
-          <form id="fact-check-form">
-              <input type="text" 
-                     id="statement" 
-                     name="statement" 
-                     placeholder="Example: 'The unemployment rate in 2023 was the lowest in 50 years'" 
-                     required>
-              <button type="submit">Check Fact</button>
-          </form>
-
-          <div class="loading" id="loading">
-              Checking facts...
-          </div>
-
-          <div id="result" class="result"></div>
+        
       </section>
   </main>
 
